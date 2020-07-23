@@ -16,7 +16,6 @@ class CreateMessage extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('content');
-            $table->date('date');
             $table->json('tags');
             $table->unsignedBigInteger('sender');
             $table->foreign('sender')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
