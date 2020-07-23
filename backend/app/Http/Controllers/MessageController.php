@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\MessageRepository;
 
-class MesageController extends Controller
+class MessageController extends Controller
 {
      /**
      * Create a new controller instance.
