@@ -18,3 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('/message', 'MessageController@index')->name('index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
