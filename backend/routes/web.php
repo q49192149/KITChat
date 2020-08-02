@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/message', 'MessageController@index')->name('index');
+Route::post('/message', 'MessageController@postTweet');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
