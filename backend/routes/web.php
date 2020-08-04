@@ -23,7 +23,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 # Auth Middleware
-Route::middleware(['auth'])->group(function () {
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/friend', 'FriendController@index');
+    Route::post('/friend/add', 'FriendController@store');
+    Route::post('/friend/delete', 'FriendController@delete');
+
     Route::get('/message', 'MessageController@index')->name('message.index');
     Route::post('/message', 'MessageController@store')->name('message.store');
 });
