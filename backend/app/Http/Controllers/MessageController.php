@@ -73,4 +73,33 @@ class MessageController extends Controller
         }
         return back();
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        // Set the require fields
+        $request->validate([
+            'content'=>'required',
+            'tags'=>'required',
+            'sender'=>'required',
+        ]);
+
+        // Create the tag object
+        $data = array(
+            'content' => $request->get('content'),
+            'tags' => $request->get('tags'),
+            'sender' => $request->get('sender')
+        );
+        
+        $message = $this->repo->create($data);
+        $messages = $this->repo->all();
+        $tags = config('kitchat_tags.clubs');
+
+        return redirect('/home')->with(['tags' => $tags, 'messages' => $messages]);
+    }
 }
