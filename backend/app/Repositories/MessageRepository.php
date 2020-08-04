@@ -17,6 +17,12 @@ class MessageRepository implements BaseRepositoryInterface
         return Message::find($id);
     }
 
+    public function latest_message()
+    {
+        return Message::orderBy('id', 'desc')
+        ->first();
+    }
+
     public function create(array $data)
     {
         // Create the message object
